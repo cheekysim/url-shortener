@@ -4,7 +4,7 @@
     "moduleResolution": "nodenext",
     "target": "ES2020",
     "sourceMap": false,
-    "outDir": "dist",
+    "outDir": "build",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,

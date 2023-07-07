@@ -23,7 +23,7 @@ const db = new MongoDB(
 // API routes
 router.get('/data', async (req, res) => {
   const urls = await db.read('urls');
-  res.send(urls);
+  res.send(JSON.stringify(urls));
 });
 
 router.post('/create', async (req, res) => {

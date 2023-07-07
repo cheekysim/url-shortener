@@ -2,6 +2,15 @@
   import svelteLogo from '/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+  import { onMount } from 'svelte'
+
+  let data = []
+
+  onMount(() => {
+    const res = fetch('http://localhost:3005/api/v1/data')
+      .then(res => res.json())
+      .then(json => data = json)
+  })
 </script>
 
 <main>
@@ -26,6 +35,12 @@
   <p class="read-the-docs">
     Click on the Vite and Svelte logos to learn more
   </p>
+  {#each data as item}
+    <div class="card">
+      <h2>{item.short}</h2>
+      <p>{item.long}</p>
+    </div>
+  {/each}
 </main>
 
 <style>

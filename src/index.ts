@@ -10,10 +10,10 @@ import path from 'path';
 
 dotenv.config();
 
-const __dirname = path.dirname(import.meta.url);
-
 const app = express();
 const port = process.env.PORT || 3000;
+
+const __dirname = path.resolve();
 
 // app config
 app.use(cors());
@@ -31,16 +31,16 @@ const db = new MongoDB(
   process.env.MONGO_PASS
 );
 
+app.use(express.static('client/public'));
 // Handle 404 requests
-app.all('*', (req, res) => {
+app.get('*', (req, res) => {
   // Redirect the user to the homepage if the request is not an API request
   if (!req.path.includes('/api/')) {
     db.read('urls', { short: req.path.slice(1) }).then((data) => {
       if (data.length) {
         res.redirect(data[0].long);
       } else {
-        console.log(path.join(__dirname, '../client/dist', 'index.html'));
-        res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
       }
     });
   }
