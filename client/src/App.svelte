@@ -7,7 +7,7 @@
   let data = []
 
   onMount(() => {
-    const res = fetch('http://localhost:3005/api/v1/data')
+    fetch('http://localhost:3005/api/v1/data')
       .then(res => res.json())
       .then(json => data = json)
   })
