@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .ts --fix",
     "build": "tsc",
     "start": "node .",
+    "client-install": "cd client && npm install",
     "serve:server": "nodemon --ext ts,json --watch src --exec \"ts-node ./src/index.ts\"",
     "serve:client": "cd client && npm run dev",
     "parallel": "npm-run-all --parallel serve:*",
