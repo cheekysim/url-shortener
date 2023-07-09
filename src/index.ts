@@ -13,14 +13,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const __dirname = path.resolve();
-
 // app config
 app.use(cors());
 app.use(helmet());
 app.use(compression());
 app.use(express.json());
-app.use(morgan('common'));
 app.use(api);
 
 // Configure MongoDB
@@ -40,7 +37,7 @@ app.get('*', (req, res) => {
       if (data.length) {
         res.redirect(data[0].long);
       } else {
-        res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
+        res.redirect('https://github.com/cheekysim/url-shortener');
       }
     });
   }

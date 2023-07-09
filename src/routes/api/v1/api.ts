@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import { MongoDB } from '../../../db.js';
@@ -21,14 +21,30 @@ const db = new MongoDB(
 );
 
 // API routes
-router.get('/data', async (req, res) => {
+router.get('/data', async (req: Request, res: Response) => {
+  if (!verifyToken(req.headers.authorization)) {
+    res.sendStatus(403);
+    return;
+  }
   const urls = await db.read('urls');
   res.send(JSON.stringify(urls));
 });
 
-router.post('/create', async (req, res) => {
+router.post('/data', async (req, res) => {
+  if (!verifyToken(req.headers.authorization)) {
+    res.sendStatus(403);
+    return;
+  }
   const { long, short } = req.body;
   const data = await db.write('urls', { long, short });
   res.send(data);
 });
 export default router;
+
+function verifyToken(bearerHeader: string): boolean {
+  if (typeof bearerHeader === 'undefined') return false;
+  const bearer = bearerHeader.split(' ');
+  const bearerToken = bearer[1];
+  if (bearerToken !== process.env.API_TOKEN) return false;
+  return true;
+}

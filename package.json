@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf dist",
+    "copy": "cp .env client/.env",
     "lint": "eslint . --ext .ts --fix",
     "build": "tsc",
     "start": "node .",
