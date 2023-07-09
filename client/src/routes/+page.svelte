@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { create } from "domain";
 	import { onMount } from "svelte";
-  export let data;
+  import type { PageData } from "./$types";
+  export let data: PageData;
   export let form;
 
   let shortUrl = "";
@@ -20,27 +20,10 @@
       return shortUrl;
     }
   }
-
-  async function createShortUrl(event: Event) {
-    const res = await fetch("/api/short", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        long: form.longUrl,
-        short: form.shortUrl,
-      }),
-    });
-    const data = await res.json();
-    return data;
-  }
-
-  $: console.log(shortUrl || shortUrlPlaceholder);
 </script>
 
 <div class="container">
-  <form on:submit|preventDefault={createShortUrl} method="POST">
+  <form action="?/create" method="POST">
     <label>
       Long URL
       <input type="text" name="longUrl" required/>
@@ -52,7 +35,15 @@
     </label>
     <button type="submit">Submit</button>
   </form>
-  {#if form?.success}
+  {#if form?.processed}
+    {#if form?.code === 200}
     <p>Form Success<br><a href="/{form?.short}">http://localhost:5173/{form?.short}</a></p>
+    {:else if form?.code === 304}
+    <p>Form Success | Already Exists<br><a href="/{form?.short}">http://localhost:5173/{form?.short}</a></p>
+    {:else if form?.code === 409}
+    <p>Form Error | Short URL Already Exists</p>
+    {:else}
+    <p>Form Error | Unknown Error</p>
+    {/if}
   {/if}
 </div>

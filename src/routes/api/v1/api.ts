@@ -39,6 +39,7 @@ router.post('/data', async (req, res) => {
   const data = await db.write('urls', { long, short });
   res.send(data);
 });
+
 export default router;
 
 function verifyToken(bearerHeader: string): boolean {

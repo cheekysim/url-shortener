@@ -1,5 +1,5 @@
-import { redirect } from "@sveltejs/kit";
-import { getData } from "$lib/getData";
+import { redirect } from '@sveltejs/kit';
+import { getData } from '$lib/server/getData';
 
 export async function load({ params }: { params: { short: string } }): Promise<{ url: string }> {
 	const data = await getData();
