@@ -3,15 +3,13 @@ import dotenv from 'dotenv';
 import api from './routes/api/v1/api.js';
 import cors from 'cors';
 import helmet from 'helmet';
-import morgan from 'morgan';
 import compression from 'compression';
 import { MongoDB } from './db.js';
-import path from 'path';
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3005;
 
 // app config
 app.use(cors());

@@ -4,6 +4,12 @@ services:
     container_name: url-shortener
     pull_policy: build
     build: .
+    environmentt:
+      - MONGO_IP=${MONGO_IP}
+      - MONGO_DB=${MONGO_DB}
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASS=${MONGO_PASS}
+      - API_TOKEN=${API_TOKEN}
     ports:
       - 4173:4173
     labels:
