@@ -17,7 +17,7 @@
     "dev": "npm-run-all parallel",
     "prod": "npm-run-all --parallel prod:*",
     "prod:server": "npm-run-all clean build start",
-    "prod:client": "cd client && npm run preview"
+    "prod:client": "cd client && npm run prod"
   },
   "repository": {
     "type": "git",

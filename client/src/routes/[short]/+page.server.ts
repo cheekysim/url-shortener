@@ -3,10 +3,10 @@ import { getData } from '$lib/server/getData';
 
 export async function load({ params }: { params: { short: string } }): Promise<{ url: string }> {
 	const data = await getData();
-	data.forEach((url) => {
-		if (url.short === params.short) {
-			throw redirect(308, url.long);
-		}
-	});
-	throw redirect(308, '/');
+	const url = data.find((u) => u.short === params.short);
+	if (url) {
+		throw redirect(308, url.long);
+	} else {
+		throw redirect(308, '/');
+	}
 }
