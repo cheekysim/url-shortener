@@ -15,6 +15,9 @@ export const actions = {
 				Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 		}
 		short = short.toString();
+		if (short.length > 20) {
+			return { short: short, processed: true, code: 413 };
+		}
 		const currentData = await getData();
 		const longExists = currentData.find((data) => data.long === long);
 		const shortExists = currentData.find((data) => data.short === short);
