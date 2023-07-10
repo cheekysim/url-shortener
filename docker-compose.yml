@@ -4,7 +4,7 @@ services:
     container_name: url-shortener
     pull_policy: build
     build: .
-    environmentt:
+    environment:
       - MONGO_IP=${MONGO_IP}
       - MONGO_DB=${MONGO_DB}
       - MONGO_USER=${MONGO_USER}
