@@ -30,7 +30,8 @@ export const actions = {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${API_TOKEN}`
+				Authorization: `Bearer ${API_TOKEN}`,
+				'Access-Control-Allow-Origin': '*'
 			},
 			body: JSON.stringify({ long, short })
 		});
