@@ -14,7 +14,7 @@
     "serve:server": "nodemon --ext ts,json --watch src --exec \"ts-node ./src/index.ts\"",
     "serve:client": "cd client && npm run dev",
     "dev": "npm-run-all --parallel serve:*",
-    "prod": "npm-run-all prod:client prod:server",
+    "prod": "npm-run-all --parallel prod:client prod:server",
     "prod:server": "npm-run-all clean build start",
     "prod:client": "cd client && npm run prod"
   },
