@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import { MongoDB } from '../../../db.js';
@@ -21,7 +21,7 @@ const db = new MongoDB(
 );
 
 // API routes
-router.get('/data', async (req: Request, res: Response) => {
+router.get('/data', async (req, res) => {
   if (!verifyToken(req.headers.authorization)) {
     res.sendStatus(403);
     return;

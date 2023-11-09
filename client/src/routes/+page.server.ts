@@ -2,7 +2,7 @@ import { API_TOKEN } from '$env/static/private';
 import { getData } from '$lib/server/getData.js';
 
 export const actions = {
-	create: async ({
+	default: async ({
 		request
 	}: {
 		request: Request;

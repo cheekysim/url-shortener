@@ -22,7 +22,7 @@
 </script>
 
 <section class="container">
-	<form action="?/create" method="POST" class="main-form">
+	<form method="POST" class="main-form">
 		<div class="inputs">
 			<label>
 				<h4>Long URL</h4>
