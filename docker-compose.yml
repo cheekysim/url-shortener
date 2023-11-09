@@ -13,4 +13,5 @@ services:
       - ORIGIN=${ORIGIN}
     ports:
       - 4173:4173
+      - 3005:3005
     restart: unless-stopped
