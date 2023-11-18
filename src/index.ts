@@ -4,8 +4,6 @@ import api from './routes/api/v1/api.js';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
-// @ts-expect-error - no types
-import { handler } from '../client/build/handler.js';
 
 dotenv.config();
 
@@ -18,7 +16,6 @@ app.use(helmet());
 app.use(compression());
 app.use(express.json());
 app.use(api);
-app.use(handler);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
