@@ -1,4 +1,4 @@
-import { API_TOKEN } from '$env/static/private';
+import { API_KEY } from '$env/static/private';
 import { getData } from '$lib/server/getData.js';
 
 export const actions = {
@@ -26,11 +26,11 @@ export const actions = {
 		} else if (shortExists) {
 			return { short: short.toString(), processed: true, code: 409 };
 		}
-		await fetch('http://localhost:3005/api/v1/data', {
+		await fetch('http://localhost:4005/api/v1/data', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${API_TOKEN}`,
+				Authorization: `Bearer ${API_KEY}`,
 				'Access-Control-Allow-Origin': '*'
 			},
 			body: JSON.stringify({ long, short })

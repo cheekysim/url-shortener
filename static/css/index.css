@@ -10,6 +10,7 @@
 	background-color: var(--color-tertiary);
 	width: 60dvw;
 	height: 60dvh;
+	min-width: 600px;
 
 	--outline-gradient: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
 }
@@ -39,10 +40,14 @@
 	text-align: center;
 	font-size: 1.5em;
 	padding: 0.5em;
-	width: 40dvw;
+	width: 100%;
 	border: 2px solid var(--color-secondary);
 	border-radius: 0.5em;
 	transition: border 0.5s ease-in-out;
+}
+
+.inputs {
+	width: 80%;
 }
 
 .main-form .output,
@@ -53,10 +58,15 @@
 	color: var(--color-text);
 	background-color: transparent;
 	cursor: pointer;
-	width: 40dvw;
-	transition: border 0.2s ease-in-out, transform 0.2s ease-in-out;
+	width: 80%;
+	transition: border 0.2s ease-in-out, transform 0.2s ease-in-out, color 0.2s ease-in-out;
 	display: flex;
 	justify-content: space-around;
+}
+
+.generate:disabled {
+	cursor: auto !important;
+	color: hsl(0, 0%, 30%);
 }
 
 .generate {
@@ -67,6 +77,13 @@
 .main-form p {
 	text-align: center;
 	margin: 0.5em;
+}
+
+.subtext {
+	color: hsl(0, 0%, 30%);
+	padding: 0;
+	margin: 0 !important;
+	font-size: small;
 }
 
 .output .copy-container,
@@ -99,8 +116,8 @@
 
 .main-form input:focus-visible,
 .main-form input:hover,
-.main-form .generate:focus-visible,
-.main-form .generate:hover,
+.main-form .generate:not(:disabled):focus-visible,
+.main-form .generate:not(:disabled):hover,
 .output:hover {
 	outline: none;
 	border: 2px solid var(--color-primary);
@@ -111,7 +128,7 @@
 	outline: 2px solid var(--color-primary);
 }
 
-.main-form .generate:active {
+.main-form .generate:not(:disabled):active {
 	transform: scale(0.95);
 }
 

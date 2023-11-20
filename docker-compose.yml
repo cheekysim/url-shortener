@@ -1,0 +1,12 @@
+version: '3'
+services:
+  url-shortener-client:
+    container_name: url-shortener-client
+    pull_policy: build
+    build: .
+    environment:
+      - API_KEY=${API_KEY}
+      - ORIGIN=${ORIGIN}
+    ports:
+      - 4173:4173
+    restart: unless-stopped

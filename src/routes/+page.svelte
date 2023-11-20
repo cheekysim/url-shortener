@@ -4,6 +4,7 @@
 	export let data: PageData;
 	export let form;
 
+	let longUrl = '';
 	let shortUrl = '';
 	let shortUrlPlaceholder = 'Generating...';
 
@@ -26,15 +27,20 @@
 		<div class="inputs">
 			<label>
 				<h4>Long URL</h4>
-				<input type="text" name="longUrl" required />
+				<input type="text" name="longUrl" required bind:value={longUrl} />
 			</label>
 			<label>
-				<h4>Short URL</h4>
+				<h4>
+					Short URL
+					<p class="subtext">Max 20 Characters</p>
+				</h4>
+
 				<input
 					type="text"
 					name="shortUrl"
 					bind:value={shortUrl}
 					placeholder={shortUrlPlaceholder}
+					maxlength="20"
 				/>
 				<input type="hidden" name="shortUrlPlaceholder" value={shortUrlPlaceholder} />
 			</label>
@@ -108,7 +114,12 @@
 				</div>
 			{/if}
 		{:else}
-			<button type="submit" class="generate">Generate Short URL</button>
+			<button
+				type="submit"
+				class="generate"
+				disabled={shortUrlPlaceholder === 'Generating...' || longUrl === '' ? true : false}
+				>Generate Short URL</button
+			>
 		{/if}
 	</form>
 	<div class="form-background" />

@@ -1,10 +1,10 @@
-import { API_TOKEN } from '$env/static/private';
+import { API_KEY } from '$env/static/private';
 
 export async function getData(): Promise<Data[]> {
-	const response = await fetch('http://localhost:3005/api/v1/data', {
+	const response = await fetch('http://localhost:4005/api/v1/data', {
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${API_TOKEN}`
+			Authorization: `Bearer ${API_KEY}`
 		}
 	});
 	const data = await response.json();
