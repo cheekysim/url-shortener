@@ -46,6 +46,6 @@ function verifyToken(bearerHeader: string): boolean {
   if (typeof bearerHeader === 'undefined') return false;
   const bearer = bearerHeader.split(' ');
   const bearerToken = bearer[1];
-  if (bearerToken !== process.env.API_TOKEN) return false;
+  if (bearerToken !== process.env.API_KEY) return false;
   return true;
 }

@@ -1,7 +1,7 @@
 version: '3'
 services:
-  url-shortener:
-    container_name: url-shortener
+  url-shortener-server:
+    container_name: url-shortener-server
     pull_policy: build
     build: .
     environment:
@@ -9,9 +9,7 @@ services:
       - MONGO_DB=${MONGO_DB}
       - MONGO_USER=${MONGO_USER}
       - MONGO_PASS=${MONGO_PASS}
-      - API_TOKEN=${API_TOKEN}
-      - ORIGIN=${ORIGIN}
+      - API_KEY=${API_KEY}
     ports:
-      - 4173:4173
-      - 3005:3005
+      - 4005:4005
     restart: unless-stopped
