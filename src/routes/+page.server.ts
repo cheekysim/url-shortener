@@ -26,7 +26,7 @@ export const actions = {
 		} else if (shortExists) {
 			return { short: short.toString(), processed: true, code: 409 };
 		}
-		await fetch('http://localhost:4006/api/v1/data', {
+		await fetch('http://localhost:4006/api/data', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
