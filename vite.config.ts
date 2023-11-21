@@ -10,7 +10,7 @@ export default defineConfig({
 			'/api': {
 				target: 'http://localhost:4005/api/v1',
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, ''),
+				rewrite: (path) => path.replace(/\/api/, ''),
 				configure: (proxy) => {
 					proxy.on('error', (err) => {
 						console.log('proxy error', err);
@@ -33,7 +33,7 @@ export default defineConfig({
 			'/api': {
 				target: 'http://192.168.1.75:4005/api/v1',
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, '')
+				rewrite: (path) => path.replace(/\/api/, '')
 			}
 		}
 	}
