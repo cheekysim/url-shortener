@@ -1,0 +1,11 @@
+{
+  "folders": [
+	{
+		"path": "../url-shortener-server"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {}
+}
