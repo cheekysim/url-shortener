@@ -8,5 +8,5 @@ services:
       - API_KEY=${API_KEY}
       - ORIGIN=${ORIGIN}
     ports:
-      - 4173:4173
+      - 4006:4006
     restart: unless-stopped
