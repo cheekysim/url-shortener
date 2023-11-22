@@ -5,6 +5,8 @@
 	--color-text: hsl(0, 0%, 70%);
 	--color-text-input: hsl(0, 0%, 60%);
 	--color-scrollbar: hsl(0, 0%, 25%);
+	--color-success: hsl(110, 80%, 50%);
+	--color-error: hsl(0, 80%, 50%);
 	--scrollbar-width: 1rem;
 	font-size: 62.5%;
 }

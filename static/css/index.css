@@ -133,7 +133,7 @@
 }
 
 svg {
-	transition: all 0.2s ease-in-out;
+	transition: scale 0.2s ease-in-out, fill 0.1s ease;
 	fill: var(--color-text);
 }
 
@@ -147,4 +147,5 @@ svg {
 .copy-container > button:active > svg,
 .regen-container > button:active > svg {
 	transform: scale(0.9);
+	fill: var(--color-success) !important;
 }
