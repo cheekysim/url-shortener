@@ -10,7 +10,7 @@ export const actions = {
 		const formData = await request.formData();
 		const long = formData.get('longUrl');
 		let short = formData.get('shortUrl') || formData.get('shortUrlPlaceholder');
-		if (!short) {
+		if (!short || short === 'Generating...') {
 			short =
 				Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 		}
@@ -19,11 +19,8 @@ export const actions = {
 			return { short: short, processed: true, code: 413 };
 		}
 		const currentData = await getData();
-		const longExists = currentData.find((data) => data.long === long);
 		const shortExists = currentData.find((data) => data.short === short);
-		if (longExists) {
-			return { short: longExists.short, processed: true, code: 304 };
-		} else if (shortExists) {
+		if (shortExists) {
 			return { short: short.toString(), processed: true, code: 409 };
 		}
 		await fetch('http://localhost:4006/api/data', {
