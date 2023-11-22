@@ -6,7 +6,8 @@ services:
     build: .
     environment:
       - API_KEY=${API_KEY}
-      - ORIGIN=${ORIGIN}
+      - SERVER_PORT=4006
+      - SERVER_ORIGIN=${ORIGIN}
     ports:
       - 4006:4006
     restart: unless-stopped
