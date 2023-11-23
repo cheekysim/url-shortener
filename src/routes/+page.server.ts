@@ -1,4 +1,4 @@
-import { API_KEY } from '$env/static/private';
+import { API_KEY, API_ORIGIN } from '$env/static/private';
 import { getData } from '$lib/server/getData.js';
 
 export const actions = {
@@ -23,7 +23,7 @@ export const actions = {
 		if (shortExists) {
 			return { short: short.toString(), processed: true, code: 409 };
 		}
-		await fetch('http://localhost:4006/api/data', {
+		await fetch(`${API_ORIGIN}/data`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
