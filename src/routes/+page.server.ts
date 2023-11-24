@@ -8,7 +8,10 @@ export const actions = {
 		request: Request;
 	}): Promise<{ short: string; processed: boolean; code: number }> => {
 		const formData = await request.formData();
-		const long = formData.get('longUrl');
+		let long = formData.get('longUrl')?.toString();
+		if (!long?.startsWith('https://') && !long?.startsWith('http://')) {
+			long = 'https://' + long;
+		}
 		let short = formData.get('shortUrl') || formData.get('shortUrlPlaceholder');
 		if (!short || short === 'Generating...') {
 			short =
